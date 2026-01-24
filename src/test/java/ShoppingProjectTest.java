@@ -194,7 +194,7 @@ public class ShoppingProjectTest {
     list.addToEnd(new ShoppingItem("a", 100));
     list.addToEnd(new ShoppingItem("b", 250));
 
-    assertEquals(3.50, list.totalPrice(), 0.001);
+    assertEquals(3.50, list.getTotalPrice(), 0.001);
   }
 
   // =========================
