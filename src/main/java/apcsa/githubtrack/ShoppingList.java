@@ -85,7 +85,7 @@ public class ShoppingList implements MyList {
 
     public void makeCapacity(int minCapacity)
     {
-        if(minCapacity > size && minCapacity != capacity) // only makes changes if minCapacity is greater than size and different from current capacity
+        if (minCapacity != capacity && (minCapacity > size || minCapacity < capacity)) // only makes changes if minCapacity is greater than size and different from current capacity
         {
             if(minCapacity < 8) // if minCapacity is less than 8, it gets set to 8
             {
