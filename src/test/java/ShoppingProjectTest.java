@@ -3,6 +3,7 @@
 import static org.junit.jupiter.api.Assertions.*;
 
 import apcsa.githubtrack.*;
+
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import org.junit.jupiter.api.*;
@@ -133,13 +134,17 @@ public class ShoppingProjectTest {
   }
 
   @Test
-  public void testTrimExcess() {
+  public void testTrimExcessOnEmptyList() {
     ShoppingList list = new ShoppingList();
-    list.addToEnd(new ShoppingItem("a", 100));
-    list.addToEnd(new ShoppingItem("b", 200));
+
+    // Sanity check: list starts empty
+    assertEquals(0, list.getSize(), "New list should start with size 0");
+
     list.trimExcess();
 
-    assertEquals(2, list.getCapacity(), "Capacity should match size after trimExcess");
+    // Per spec: capacity must never drop below 8
+    assertEquals(8, list.getCapacity(),
+            "trimExcess on an empty list should preserve minimum capacity of 8");
   }
 
   @Test
